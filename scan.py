@@ -6,6 +6,7 @@ try:
 	import pyfiglet
 	from colorama import Fore
 	import os
+	import sys
 	from progress.bar import Bar	# module for loading
 except:
 	print("Require Module Not Found \n Try pip3 install -r requirement.txt")
@@ -96,7 +97,13 @@ def scan(admin_list):
 def final_fun():
 	banner()
 	open_list()
-	# open_list will start the scan fun
-
-if __name__ == '__main__':
-	final_fun()
+	# open_list will start the scan fun:
+	 
+if sys.platform in ["linux","linux2"]:
+	      pass
+	      if __name__ == '__main__':
+	      	final_fun()
+	      else:
+	      	system.os('pyfiglet Admin Scanner')
+	      	print("This Program was made by Unknow 4L13N/Made In Myanmar")
+		open_list()
