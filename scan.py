@@ -29,8 +29,8 @@ def banner():	# banner
   / L___J \  F L__J J  F L LJ J J J  L F L  J J    .--___) \F L___--. F L__J J  F L  J J  F L  J J  F L___--. F L  `-'
  J__L   J__LJ\____,__LJ__L LJ J__LJ__LJ__L  J__L   J\______J\______/FJ\____,__LJ__L  J__LJ__L  J__LJ\______/FJ__L
  |__L   J__| J____,__F|__L LJ J__||__||__L  J__|    J______FJ______F  J____,__F|__L  J__||__L  J__| J______F |__L
-				*-----------------------------------*
-				This Program Was Made By Unknow 4L13N""")
+			    *---------------------------------------------------*
+			    This Program Was Made By Unknow 4L13N/Made In Myanmar""")
 
 
 
