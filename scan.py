@@ -9,6 +9,7 @@ try:
 	from progress.bar import Bar	# module for loading
 except:
 	print("Require Module Not Found \n Try pip3 install -r requirement.txt")
+	exit()
 
 
 red = Fore.RED
