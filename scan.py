@@ -50,7 +50,7 @@ def open_list():
 def scan(admin_list):
 	global extimate
 	print(blue)
-	url = input("Enter Website To Scan [example http://www.1234fakeweb.com]: ")
+	url = input("Enter Website To Scan \n[example http://www.1234fakeweb.com]: ")
 	try:
 		requests.get(url)
 	except:
