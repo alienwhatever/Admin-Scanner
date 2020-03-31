@@ -93,6 +93,7 @@ def scan(admin_list):
 	print(f"{green}{'*' * 10} Extimate Admin Panel Url List {'*' * 10}")
 	for links in extimate:
 		print(links)
+	print(white)
 
 # fun to start program
 def final_fun():
