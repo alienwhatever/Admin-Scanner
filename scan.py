@@ -15,8 +15,8 @@ except:
 
 red = Fore.RED
 yellow = Fore.YELLOW
-green = '\033[1;32;40m'
-white = '\033[0;37;40m'
+green = '\033[1;32;0m'
+white = '\033[0;37;0m'
 blue = Fore.BLUE
 
 extimate = []
