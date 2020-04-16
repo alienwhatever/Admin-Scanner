@@ -11,7 +11,7 @@ sudo apt install git
 git clone https://github.com/swam-htet-a/Admin-Scanner.git
 cd Admin-Scanner
 
-pip3 instal -r requirement.txt
+pip3 install -r requirement.txt
 
 python3 scan.py
 
