@@ -28,9 +28,9 @@ def banner():	# banner
  /\  _|._ _ o._ (_  _ _.._ ._  _ ._ 
 /--\(_|| | ||| |__)(_(_|| || |(/_| 
 *----------------------------------*{green}
-Developer => Unknow 4L13N
+Developer => Swam Htet Aung
 Country   => Myanmar
-Email	  => unknow4l13n@gmail.com
+Email	  => programmerdream1234@gmail.com
 github	  => https://github.com/swam-htet-a{white}
   """)
 
