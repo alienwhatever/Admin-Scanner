@@ -13,7 +13,9 @@ cd Admin-Scanner
 
 pip3 install -r requirement.txt
 
-python3 scan.py
+python3 scan.py https://examplewebsite.com
+
+use with custom wordlist - python3 scan.py https://examplewebsite.com -w /path/of/wordlist/wordlist.txt
 
 ## How to Install(Termux/Android)
 pkg update && pkg upgrade
@@ -28,4 +30,8 @@ cd Admin-Scanner
 
 pip3 install -r requirement.txt
 
-python3 scan.py
+python3 scan.py https://examplewebsite.com
+
+use with custom wordlist - python3 scan.py https://examplewebsite.com -w /path/of/wordlist/wordlist.txt
+
+
