@@ -116,7 +116,7 @@ def scan(admin_list, url):
 
 	else:
 		# print out the extimate admin url list
-		print(f"{green}{'*' * 10} Extimate Admin Panel Url List {'*' * 10}")
+		print(f"{white}{'*' * 10} Extimate Admin Panel Url List {'*' * 10}")
 		for links in extimate:
 			print(links)
 		print(white)
