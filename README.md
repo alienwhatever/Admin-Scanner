@@ -1,7 +1,8 @@
 # Admin-Scanner
 Website Admin Panel Finder 
 
-##  How To Install(Linux/pc)
+##  How To Install 
+*** (Linux/pc) ***
 sudo apt install python3
 
 sudo apt install python3-pip
