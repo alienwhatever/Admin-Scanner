@@ -10,7 +10,7 @@ try:
 	import sys
 	from progress.bar import Bar	# module for loading
 except:
-	print("Require Module Not Found \n Try pip3 install -r requirement.txt")
+	print("Require Module Not Found \n Try pip3 install -r requirements.txt")
 	exit()
 
 
