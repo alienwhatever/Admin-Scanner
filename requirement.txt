@@ -1,6 +1,0 @@
-requests
-pyfiglet
-colorama
-progress
-sys
-argparse
