@@ -4,7 +4,6 @@
 try:
 	import argparse
 	import requests
-	import pyfiglet
 	from colorama import Fore
 	import os
 	import sys
