@@ -1,5 +1,4 @@
 requests
-pyfiglet
 colorama
 progress
 argparse
