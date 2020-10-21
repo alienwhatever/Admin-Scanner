@@ -1,37 +1,38 @@
 # Admin-Scanner
-Website Admin Panel Finder 
+#### ***Website Admin Panel Finder***
 
-##  How To Install(Linux/pc)
-sudo apt install python3
+##  How To Install ***(Linux/pc)***
 
-sudo apt install python3-pip
+* sudo apt install python3
 
-sudo apt install git
+* sudo apt install python3-pip
 
-git clone https://github.com/swam-htet-a/Admin-Scanner.git
-cd Admin-Scanner
+* sudo apt install git
 
-pip3 install -r requirement.txt
+* git clone https://github.com/swam-htet-a/Admin-Scanner.git cd Admin-Scanner
 
-`python3 scan.py https://examplewebsite.com`
+* pip3 install -r requirement.txt
 
-use with custom wordlist - `python3 scan.py https://examplewebsite.com -w /path/of/wordlist/wordlist.txt`
+* `python3 scan.py https://examplewebsite.com`
 
-## How to Install(Termux/Android)
-pkg update && pkg upgrade
+* Use with custom wordlist - `python3 scan.py https://examplewebsite.com -w /path/of/wordlist/wordlist.txt`
 
-pkg install python3
+## How to Install ***(Termux/Android)***
 
-pkg install git
+* pkg update && pkg upgrade
 
-git clone https://github.com/swam-htet-a/Admin-Scanner.git
+* pkg install python3
 
-cd Admin-Scanner
+* pkg install git
 
-pip3 install -r requirement.txt
+* git clone https://github.com/swam-htet-a/Admin-Scanner.git
 
-`python3 scan.py https://examplewebsite.com`
+* cd Admin-Scanner
 
-use with custom wordlist - `python3 scan.py https://examplewebsite.com -w /path/of/wordlist/wordlist.txt`
+* pip3 install -r requirement.txt
+
+* `python3 scan.py https://examplewebsite.com`
+
+* Use with custom wordlist - `python3 scan.py https://examplewebsite.com -w /path/of/wordlist/wordlist.txt`
 
 
