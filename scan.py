@@ -22,7 +22,7 @@ args = parser.parse_args()
 red = Fore.RED
 yellow = Fore.YELLOW
 green = '\033[1;37;42m'
-white = Fore.WHITE
+white = '\033[0;37;40m'
 blue = Fore.BLUE
 
 extimate = []
