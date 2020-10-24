@@ -21,7 +21,7 @@ args = parser.parse_args()
 # define colors
 red = Fore.RED
 yellow = Fore.YELLOW
-green = '\0;37;42m'
+green = '0;37;42m'
 white = Fore.WHITE
 blue = Fore.BLUE
 
