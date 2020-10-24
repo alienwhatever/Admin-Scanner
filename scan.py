@@ -28,20 +28,11 @@ blue = Fore.BLUE
 extimate = []
 
 def banner():	# banner
-	print(yellow)
-	## logo
 	print(f"""
- /\  _|._ _ o._ (_  _ _.._ ._  _ ._
-/--\(_|| | ||| |__)(_(_|| || |(/_|
-*----------------------------------*
-[Made In Myanmar]
-Email	  => programmerdream1234@gmail.com
-github	  => https://github.com/swam-htet-a{white}
-  """)
-
-
-
-
+{white} [MADE IN MYANMAR]{yellow}
+*----------------------------------*{white}""")
+	
+	
 # open the list and call the scan function
 def open_list(url):
 	print("Reading Lines")
