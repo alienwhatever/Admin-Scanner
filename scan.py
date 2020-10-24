@@ -21,8 +21,8 @@ args = parser.parse_args()
 # define colors
 red = Fore.RED
 yellow = Fore.YELLOW
-green = '\033[1;37;42m'
-white = '\033[0;37;40m'
+green = Fore.GREEN
+white = Fore.WHITE
 blue = Fore.BLUE
 
 extimate = []
