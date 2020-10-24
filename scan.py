@@ -21,7 +21,7 @@ args = parser.parse_args()
 # define colors
 red = Fore.RED
 yellow = Fore.YELLOW
-green = '0;37;42m'
+green = '\0[1;37;42m'
 white = Fore.WHITE
 blue = Fore.BLUE
 
@@ -107,7 +107,7 @@ def scan(admin_list, url):
 
 	else:
 		# print out the extimate admin url list
-		print(f"{green}{'*' * 10} Extimate Admin Panel URL(s) List {'*' * 10}")
+		print(f"{'*' * 10} {green}Extimate Admin Panel URL(s) List{white} {'*' * 10}")
 		for links in extimate:
 			print(links)
 		print(white)
