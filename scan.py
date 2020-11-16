@@ -27,22 +27,31 @@ if len(argv) == 1:
     print (msg)
     print ('Usages:')
     print ("""
+-site <url of website> - Website to scan
+
 --proxy <prorocol>-<proxyserverip:port> - Scan admin panel using proxy server
-<url of website> - Website to scan
+
+--w custom wordlist
 
 Example:
-./{0} example.com
-./{0} --proxy http-1.2.3.4:8080 example.com
+./{0} -site example.com
+./{0} -site example.com example2.com
+./{0} --proxy http-1.2.3.4:8080 -site example.com
 """.format(argv[0]))
     exit()
 else:
     if '--proxy' in argv[1]:
-        websites_to_scan = argv[3:]
         proxy_enable = True
         proxyprotocol, proxyserver = argv[2].split('-')
         print ('Using Proxy - True')
-    else:
-        websites_to_scan = argv[1:]
+
+
+    if '-site' not in argv[1:]:
+        print ('Which site you wanna scan!!!!')
+        exit()
+
+    if '-site' in argv[1:]:
+        websites_to_scan = argv[argv.index('-site')+1:]
 
 # used threading things #
 # Lock
