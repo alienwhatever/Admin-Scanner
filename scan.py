@@ -51,7 +51,7 @@ else:
         exit()
 
     if '-site' in argv[1:]:
-        websites_to_scan = argv[argv.index('-site')+1:]
+        websites_to_scan = argv[argv.index('-site')+1]
 
 # used threading things #
 # Lock
