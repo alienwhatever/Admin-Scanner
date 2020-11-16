@@ -27,6 +27,7 @@
 * pip3 install -r requirement.txt
 
 ## Usage
+```
 author: alienwhatever
 credit github.com/bdblackhat for list.txt
 orginal-source-of-list.txt -  https://github.com/bdblackhat/admin-panel-finder/blob/master/link.txt
@@ -47,6 +48,6 @@ Example:
 ./scan.py -site example.com example2.com
 ./scan.py -site example.com --w /custom/wordlist/list.txt
 ./scan.py --proxy http-1.2.3.4:8080 -site example.com
-
+```
 
 
