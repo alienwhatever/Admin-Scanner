@@ -1,132 +1,88 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
-##### list.txt is get form --> https://github.com/bdblackhat/admin-panel-finder/blob/master/link.txt
-try:
-	import argparse
-	import requests
-	from colorama import Fore
-	import os
-	import sys
-	from progress.bar import Bar	# module for loading
-except:
-	print("Require Module Not Found \n Try pip3 install -r requirements.txt")
-	exit()
+from threading import Lock, Thread
+from requests import get
+from requests.exceptions import ConnectionError as fail
+from queue import Queue
+from time import time
+from sys import argv
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument('url', metavar="url", type=str, help="Target url to scan", nargs="+")
-parser.add_argument('-w', metavar="-w", type=str, help="Custom wordlist") 	# to ADD PARSER
-args = parser.parse_args()
-
-# define colors
-red = Fore.RED
-yellow = Fore.YELLOW
-green = Fore.GREEN
-white = Fore.WHITE
-blue = Fore.BLUE
-
-extimate = []
-
-def banner():	# banner
-	print(f"""
-{white} [MADE IN MYANMAR]{yellow}
-*----------------------------------*{white}""")
-	
-	
-# open the list and call the scan function
-def open_list(url):
-	print("Reading Lines")
-	# check if user define -w custom wordlist value or not
-	# if -w custom word list is not define use default wordlist to scan
-	if args.w == "" or None:
-		try:
-			print(args.w)
-			f = open(args.w, 'r')
-
-		except Exception as error:
-			print(error)
-			return 1
-	else:
-		f = open('list.txt', 'r')
-
-	admin_list = f.readlines()
-
-	print(f"{len(admin_list)} numbers of lines found in list.txt!")
-
-	scan(admin_list, url)
-
-# scan
-def scan(admin_list, url):
-	global extimate
-
-	# make sure the url
-	if url[:7] == "http://" or url[:8] == "https://":
-		pass
-	else:
-		url = 'http://' + url
-
-	print("[Target url] - " + url)
-
-	print(blue)
-
-	try:
-		requests.get(url)
-	except:
-		print(f"\n{red}[Error] Wrong/Bad Url Or Server Down!")
-		print("Include http or https in url")
-		print(f"{white}Example Url: http://www.fakeweb.com")
-		print(f"{white}Example Url: https://fakeweb.com")
-		sys.exit()
+proxy_enable = False
 
 
-	print(white)
-	bar = Bar('Processing', max=len(admin_list))	# loading
+msg = """
+author: alienwhatever
+credit github.com/bdblackhat for list.txt
+orginal-source-of-list.txt -  https://github.com/bdblackhat/admin-panel-finder/blob/master/link.txt
 
-	for panel in admin_list:
-		admin_url = url + '/' + panel
-		admin_url = admin_url.encode().decode()
+This tool is for educational and testing purposes only
+I am not responsible for what you do with this tool
+"""
 
-		try:
-			# Scanning
-			r = requests.get(admin_url.strip())
-			if r.status_code == 200:
-				# admin url found
-				extimate.append(admin_url)	# add to extimate admin url list
-				bar.next()
-			else:
-				# admin url not found
-				bar.next()
-		except:
-			pass
+msg
 
-	bar.finish()
-	print("")
+# show usage to user
+if len(argv) == 1:
+    print (msg)
+    print ('Usages:')
+    print ("""
+--proxy <prorocol>-<proxyserverip:port> - Scan admin panel using proxy server
+<url of website> - Website to scan
 
-	if len(extimate) == 0:
-		print(f"\n{red}Sorry No Admin Panel Found!{white}")
-
-	else:
-		# print out the extimate admin url list
-		print(f"{'*' * 10} {green}Extimate Admin Panel URL(s) List{white} {'*' * 10}")
-		for links in extimate:
-			print(links)
-		print(white)
-
-# fun to start program
-def final_fun(url):
-	banner()
-	open_list(url)
-	# open_list will start the scan function:
-
-
-if __name__ == '__main__':
-	if args.url != '' or None:
-		url = args.url
-
-		final_fun(url[0])
-	else:
-        	sys.exit(f"Defind the argument!\n Type python3 {__name__}")
-
+Example:
+./{0} example.com
+./{0} --proxy http-1.2.3.4:8080 example.com
+""".format(argv[0]))
+    exit()
 else:
-	print("Error")
+    if '--proxy' in argv[1]:
+        websites_to_scan = argv[3:]
+        proxy_enable = True
+        proxyprotocol, proxyserver = argv[2].split('-')
+        print ('Using Proxy - True')
+    else:
+        websites_to_scan = argv[1:]
 
+# used threading things #
+# Lock
+# Thread
+print_lock = Lock()
+
+admin_panel_list = []
+
+q = Queue()
+# run thread function using Queue and Thread()
+def thread(website):
+    worker = q.get()
+    try:
+        if proxy_enable:
+            r = get('{}{}'.format(website, worker), proxies={proxyprotocol: proxyserver}, allow_redirects=True)
+        if not proxy_enable:
+            r = get('{}{}'.format(website, worker), allow_redirects=True)
+
+        if r.status_code != 404:
+            print ('    Success: ', worker)
+
+    except fail:
+        print ('Connection Error')
+
+
+print (msg)
+for website in websites_to_scan:
+    if website[-1] != '/':
+        website = website + '/'
+    # put admin panel urls to queue
+    with open('list.txt', 'r') as f:
+        for line in f:
+            q.put(line.strip().encode().decode('utf-8'))
+
+    # create thread and run till Queue is empty
+    print ('Result for {}:'.format(website))
+    while not q.empty():
+        t = Thread(target=thread, args=(website,))
+        t.daemon = True
+        t.start()
+
+    t.join()
+    print('\n')
