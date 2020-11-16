@@ -79,7 +79,7 @@ def thread(website):
         if not proxy_enable:
             r = get('{}{}'.format(website, worker), allow_redirects=True)
 
-        if r.status_code == 200:
+        if r.status_code != 404:
             print ('    Success: ', worker)
 
     except fail:
