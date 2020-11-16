@@ -31,15 +31,17 @@ if len(argv) == 1:
 
 --proxy <prorocol>-<proxyserverip:port> - Scan admin panel using proxy server
 
---w custom wordlist
+--w <path/of/custom/wordlist> - custom wordlist
 
 Example:
 ./{0} -site example.com
 ./{0} -site example.com example2.com
+./{0} -site example.com --w /custom/wordlist/list.txt
 ./{0} --proxy http-1.2.3.4:8080 -site example.com
 """.format(argv[0]))
     exit()
 else:
+    file_to_open = 'list.txt'
     if '--proxy' in argv[1]:
         proxy_enable = True
         proxyprotocol, proxyserver = argv[2].split('-')
@@ -51,8 +53,14 @@ else:
         exit()
 
     if '-site' in argv[1:]:
-        websites_to_scan = argv[argv.index('-site')+1]
+        check = argv[argv.index('-site')+2:]
+        websites_to_scan = argv[argv.index('-site')+1:]
+        for i in check:
+            if i[:2] == '--' or i[:1] == '-':
+                websites_to_scan = argv[argv.index('-site')+1]
 
+    if '--w' in argv[1:]:
+        file_to_open = argv[argv.index('--w')+1]
 # used threading things #
 # Lock
 # Thread
@@ -78,14 +86,16 @@ def thread(website):
 
 
 print (msg)
+if type(websites_to_scan) is str:
+    websites_to_scan = [websites_to_scan]
+
 for website in websites_to_scan:
     if website[-1] != '/':
         website = website + '/'
     # put admin panel urls to queue
-    with open('list.txt', 'r') as f:
+    with open(file_to_open, 'r') as f:
         for line in f:
             q.put(line.strip().encode().decode('utf-8'))
-
     # create thread and run till Queue is empty
     print ('Result for {}:'.format(website))
     while not q.empty():
