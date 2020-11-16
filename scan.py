@@ -42,9 +42,9 @@ Example:
     exit()
 else:
     file_to_open = 'list.txt'
-    if '--proxy' in argv[1]:
+    if '--proxy' in argv[1:]:
         proxy_enable = True
-        proxyprotocol, proxyserver = argv[2].split('-')
+        proxyprotocol, proxyserver = argv[argv.index('--proxy')+1].split('-')
         print ('Using Proxy - True')
 
 
