@@ -9,7 +9,7 @@
 
 * sudo apt install git
 
-* git clone https://github.com/swam-htet-a/Admin-Scanner.git cd Admin-Scanner
+* git clone https://github.com/alienwhatever/Admin-Scanner.git cd Admin-Scanner
 
 * pip3 install -r requirement.txt
 
@@ -25,7 +25,7 @@
 
 * pkg install git
 
-* git clone https://github.com/swam-htet-a/Admin-Scanner.git
+* git clone https://github.com/alienwhatever/Admin-Scanner.git
 
 * cd Admin-Scanner
 
