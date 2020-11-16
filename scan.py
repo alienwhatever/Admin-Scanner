@@ -4,7 +4,6 @@ from threading import Lock, Thread
 from requests import get
 from requests.exceptions import ConnectionError as fail
 from queue import Queue
-from time import time
 from sys import argv
 
 
