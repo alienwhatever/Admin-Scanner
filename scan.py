@@ -3,7 +3,9 @@
 from threading import Lock, Thread
 from requests import get
 from requests.exceptions import ConnectionError as fail
+from requests.exceptions import MissingSchema as noschema
 from queue import Queue
+from time import time
 from sys import argv
 
 
@@ -82,6 +84,11 @@ def thread(website):
 
     except fail:
         print ('Connection Error')
+
+    except noschema:
+        print ('ERROR ERROR ERROR ERROR ERROR')
+        print ('ERROR: Where is URL Scheme!!!!!!! example: https://example.com or http://example.com not exmple.com')
+        exit()
 
 
 print (msg)
