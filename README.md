@@ -41,7 +41,7 @@ Usages:
 
 --proxy <prorocol>-<proxyserverip:port> - Scan admin panel using proxy server
 
- --t <second(s)> - Time delay for a thread to scan (To prevent from getting HTTP 508)
+--t <second(s)> - Time delay for a thread to scan (To prevent from getting HTTP 508)
 
 --w <path/of/custom/wordlist> - custom wordlist
 
