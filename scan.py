@@ -5,7 +5,7 @@ from requests import get
 from requests.exceptions import ConnectionError as fail
 from requests.exceptions import MissingSchema as noschema
 from queue import Queue
-from time import time
+from time import sleep
 from sys import argv
 
 
@@ -36,18 +36,23 @@ if len(argv) == 1:
 
 Example:
 ./{0} -site example.com
+./{0} -site example.com --t 2 - Time delay for a thread to scan (To prevent from HTTP 508)
 ./{0} -site example.com example2.com
 ./{0} -site example.com --w /custom/wordlist/list.txt
 ./{0} --proxy http-1.2.3.4:8080 -site example.com
 """.format(argv[0]))
     exit()
+
 else:
+    delay = 0
     file_to_open = 'list.txt'
     if '--proxy' in argv[1:]:
         proxy_enable = True
         proxyprotocol, proxyserver = argv[argv.index('--proxy')+1].split('-')
         print ('Using Proxy - True')
 
+    if '--t' in argv[1:]:
+        delay = int(argv[argv.index('--t')+1])
 
     if '-site' not in argv[1:]:
         print ('Which site you wanna scan!!!!')
@@ -66,9 +71,6 @@ else:
 # Lock
 # Thread
 print_lock = Lock()
-
-admin_panel_list = []
-
 q = Queue()
 # run thread function using Queue and Thread()
 def thread(website):
@@ -77,10 +79,10 @@ def thread(website):
         if proxy_enable:
             r = get('{}{}'.format(website, worker), proxies={proxyprotocol: proxyserver}, allow_redirects=True)
         if not proxy_enable:
-            r = get('{}{}'.format(website, worker), allow_redirects=True)
+            r = get('{}{}'.format(website, worker))
 
-        if r.status_code != 404:
-            print ('    Success: ', worker)
+        if r.ok:
+            print ('    [Status-code - {}] Success: '.format(r.status_code), worker)
 
     except fail:
         print ('Connection Error')
@@ -105,9 +107,8 @@ for website in websites_to_scan:
     # create thread and run till Queue is empty
     print ('Result for {}:'.format(website))
     while not q.empty():
-        t = Thread(target=thread, args=(website,))
-        t.daemon = True
+        t = Thread(target=thread, args=(website,), daemon=True)
         t.start()
-
+        sleep(delay)
     t.join()
     print('\n')
