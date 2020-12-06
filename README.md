@@ -1,7 +1,7 @@
 # Admin-Scanner
 #### ***Website Admin Panel Finder***
 
-##  How To Install ***(Linux/pc)***
+##  How To Install? ***(Linux/pc)***
 
 * sudo apt install python3
 
@@ -12,7 +12,7 @@
 * git clone https://github.com/alienwhatever/Admin-Scanner.git cd Admin-Scanner
 
 
-## How to Install ***(Termux/Android)***
+## How to Install? ***(Termux/Android)***
 
 * pkg update && pkg upgrade
 
