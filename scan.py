@@ -37,11 +37,11 @@ if len(argv) == 1:
 --w <path/of/custom/wordlist> - custom wordlist
 
 Example:
-./{0} -site example.com
-./{0} -site example.com --t 1
-./{0} -site example.com example2.com
-./{0} -site example.com --w /custom/wordlist/list.txt
-./{0} --proxy http-1.2.3.4:8080 -site example.com
+./{0} -site http://example.com
+./{0} -site https://example.com --t 1
+./{0} -site http://example.com example2.com
+./{0} -site https://example.com --w /custom/wordlist/list.txt
+./{0} --proxy http-1.2.3.4:8080 -site http://example.com
 """.format(argv[0]))
     exit()
 
