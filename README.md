@@ -9,7 +9,9 @@
 
 * sudo apt install git
 
-* git clone https://github.com/alienwhatever/Admin-Scanner.git cd Admin-Scanner
+* git clone https://github.com/alienwhatever/Admin-Scanner.git 
+
+* cd Admin-Scanner
 
 
 ## How to Install? ***(Termux/Android)***
@@ -23,8 +25,6 @@
 * git clone https://github.com/alienwhatever/Admin-Scanner.git
 
 * cd Admin-Scanner
-
-* pip3 install -r requirement.txt
 
 ## Usage
 ```
